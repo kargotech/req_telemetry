@@ -255,7 +255,7 @@ defmodule ReqTelemetry do
     if emit?(req, event) do
       %{ref: ref} = Req.Request.get_private(req, :telemetry)
       %{url: url, method: method} = req
-      %{status: status, headers: headers} = resp
+      %{status: status, headers: headers, body: body} = resp
 
       :telemetry.execute(
         [:req, :request, event, :stop],
@@ -266,6 +266,8 @@ defmodule ReqTelemetry do
           method: method,
           status: status,
           resp_headers: headers,
+          resp_body: body,
+          req_body: req.options[:json],
           metadata: metadata(req)
         }
       )
