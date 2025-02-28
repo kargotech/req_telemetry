@@ -272,6 +272,7 @@ defmodule ReqTelemetry do
           metadata: metadata(req)
         }
       )
+
     end
 
     {req, resp}
