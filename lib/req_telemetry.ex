@@ -295,6 +295,8 @@ defmodule ReqTelemetry do
           method: method,
           headers: headers,
           error: exception,
+          req_body: req.options[:json],
+          req_headers: headers,
           metadata: metadata(req)
         }
       )
